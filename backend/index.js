@@ -1,6 +1,6 @@
 const app = require("./app");
 const DbConnect = require("./database/DB_connect");
-const userRoutes = require("./controllers/router");
+const userRoutes = require("./router/router");
 
 DbConnect();
 

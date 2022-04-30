@@ -1,4 +1,5 @@
 const userDetails = require("../models/userSchema");
+const bcrypt = require("bcrypt");
 
 class Register {
   create = async (req, res) => {
@@ -13,13 +14,15 @@ class Register {
         throw { message: "email is already exist" };
       }
 
+      const passwordHash = bcrypt.hashSync(password, 10);
+
       const response = await userDetails.create({
         name,
         email,
-        password,
+        password: passwordHash,
       });
       return res.status(201).send({
-        message: "Data saved successfully",
+        message: "Sign Up Successfully",
         error: false,
         data: response,
       });

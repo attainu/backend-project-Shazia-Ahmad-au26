@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const userDetails = require("../models/userSchema");
 const JWT_AUTH_TOKEN = process.env.JWT_AUTH_TOKEN;
 const JWT_REFRESH_TOKEN = process.env.JWT_REFRESH_TOKEN;
+const bcrypt = require("bcrypt");
 
 class LoginService {
   login = async (req, res) => {
@@ -18,7 +19,7 @@ class LoginService {
         throw { message: "signUp is Required" };
       }
 
-      if (findCredentials[0].password == password) {
+      if (bcrypt.compareSync(password, findCredentials[0].password)) {
         const userCookieData = {
           id: findCredentials[0]._id,
           name: findCredentials[0].name,

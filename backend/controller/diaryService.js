@@ -41,7 +41,7 @@ class Diary {
     try {
       const { id } = req.params;
       const updatedata = await diaryDetails.findByIdAndUpdate(id, req.body);
-     // const Data = await diaryDetails.findById(id);
+
       res.status(200).json({
         message: "Updated data Successfully",
         error: false,

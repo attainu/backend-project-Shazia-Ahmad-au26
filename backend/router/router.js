@@ -4,6 +4,11 @@ const Diary = require("../controller/diaryService");
 const {Auth_ACCESS} = require("../middleware/auth")
 const router = require("express").Router();
 
+
+router.get('/', (req, res) => {
+    res.send('Online Diary APIs')
+})
+
 router.post("/register", Register.create);
 router.post("/login", LoginService.login);
 router.post("/diary", Diary.create);

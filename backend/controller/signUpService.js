@@ -16,11 +16,16 @@ class Register {
 
       const passwordHash = bcrypt.hashSync(password, 10);
 
-      const response = await userDetails.create({
+      const result = await userDetails.create({
         name,
         email,
         password: passwordHash,
       });
+
+      const response = {
+        name: result.name,
+        email: result.email,
+      }
       return res.status(201).send({
         message: "Sign Up Successfully",
         error: false,

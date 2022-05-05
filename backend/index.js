@@ -1,5 +1,5 @@
 const app = require("./app");
-const DbConnect = require("./database/DB_connect");
+const DbConnect = require("./database/DB_Connect");
 const userRoutes = require("./router/router");
 
 DbConnect();
@@ -20,8 +20,8 @@ app.use((error, req, res, next) => {
     },
   });
 });
-
+const PORT = process.env.PORT || 8080;
 app.listen(
-  process.env.PORT,
+  PORT,
   console.log(`server is running http://localhost:3000`)
 );

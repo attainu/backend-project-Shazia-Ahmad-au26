@@ -3,7 +3,7 @@ const diaryDetails = require("../models/diarySchema");
 class Diary {
   create = async (req, res) => {
     try {
-      const { title, description, imageUrl } = req.body;
+      const { title, description, user_id,imageUrl } = req.body;
 
       if (!title) {
         throw { message: "title is required" };
@@ -15,6 +15,7 @@ class Diary {
       const response = await diaryDetails.create({
         title,
         description,
+        user_id,
         imageUrl,
       });
       return res.status(200).send({

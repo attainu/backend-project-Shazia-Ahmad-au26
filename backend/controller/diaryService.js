@@ -3,7 +3,7 @@ const diaryDetails = require("../models/diarySchema");
 class Diary {
   create = async (req, res) => {
     try {
-      const { title, description, user_id,imageUrl } = req.body;
+      const { title, description, user_id, imageUrl } = req.body;
 
       if (!title) {
         throw { message: "title is required" };
@@ -74,7 +74,24 @@ class Diary {
       const getData = await diaryDetails.findById(id);
       console.log(getData);
       res.status(200).json({
-        message: "get the data succesfully",
+        message: "get the data successfully",
+        error: false,
+        data: getData,
+      });
+    } catch (error) {
+      return res.status(400).send({ message: error.massage, error: true });
+    }
+  };
+
+  getByUserId = async (req, res) => {
+    try {
+      const { id } = req.params;
+      console.log(id);
+
+      const getData = await diaryDetails.find({ user_id: id });
+      console.log(getData);
+      res.status(200).json({
+        message: "get the data successfully",
         error: false,
         data: getData,
       });

@@ -16,6 +16,7 @@ router.get("/diary", Diary.getAll);
 router.delete("/diary/:id",Diary.delete);
 router.get("/diary/:id",Diary.getById);
 router.put("/diary/:id",Diary.updated);
+router.get("/diary/user/:id", Diary.getByUserId);
 
 
 

@@ -23,6 +23,7 @@ class Register {
       });
 
       const response = {
+        id:result._id,
         name: result.name,
         email: result.email,
       }
